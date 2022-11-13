@@ -1,11 +1,19 @@
-import React from 'react'
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Cart from "./pages/Cart";
 
 const App = () => {
   return (
-    <div>
-      This is a main app
-    </div>
-  )
-}
+    <main className=' max-w-6xl mx-auto'>
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/cart' element={<Cart />} />
+      </Routes>
+    </main>
+  );
+};
 
-export default App
+export default App;
