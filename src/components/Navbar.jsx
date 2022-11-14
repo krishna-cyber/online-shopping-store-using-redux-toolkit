@@ -8,7 +8,7 @@ const Navbar = () => {
   const items = useSelector((state) => state.cart);
   return (
     <>
-      <nav className=' flex justify-between p-7 items-center'>
+      <nav className=' bg-[#f5f5f5] flex justify-between p-2 items-center sticky top-0 rounded-lg'>
         <Link to='/'>
           <h2 className=' font-bold text-lg'>Redux Store</h2>
         </Link>
