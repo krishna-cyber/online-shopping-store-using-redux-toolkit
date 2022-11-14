@@ -3,21 +3,15 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { add, remove } from "../app/CartSlice";
 import { useDispatch } from "react-redux";
+import { fetchPosts } from "../app/PostSlice";
 
 //Component code starts here
 const Home = () => {
-  const url = "https://fakestoreapi.com/products";
   const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const data = axios
-      .get(url)
-      .then((res) => {
-        setProducts(res.data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  useEffect(fetchPosts, []);
+
   const handleAdd = (product) => {
     dispatch(add(product));
   };
