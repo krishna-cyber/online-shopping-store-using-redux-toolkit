@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+//use store to get the how many items in the cart
 
 const Navbar = () => {
+  const items = useSelector((state) => state.cart);
   return (
     <>
       <nav className=' flex justify-between p-7 items-center'>
@@ -18,9 +22,11 @@ const Navbar = () => {
             <li className=' text-purple-500 font-medium'>Cart</li>
           </Link>
 
-          <li className=' text-white p-2 rounded-md font-medium bg-blue-500'>
-            Card items: 0
-          </li>
+          <Link
+            to='/cart'
+            className=' text-white p-2 rounded-md font-medium bg-blue-500'>
+            Card items: {items.length}
+          </Link>
         </menu>
       </nav>
     </>

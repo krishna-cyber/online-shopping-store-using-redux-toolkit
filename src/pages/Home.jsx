@@ -1,10 +1,14 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { add, remove } from "../app/CartSlice";
+import { useDispatch } from "react-redux";
 
+//Component code starts here
 const Home = () => {
   const url = "https://fakestoreapi.com/products";
   const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const data = axios
@@ -14,6 +18,9 @@ const Home = () => {
       })
       .catch((err) => console.log(err));
   }, []);
+  const handleAdd = (product) => {
+    dispatch(add(product));
+  };
   return (
     <>
       <h2 className=' font-bold text-lg'>Welcome to Redux Store</h2>
@@ -33,7 +40,11 @@ const Home = () => {
               {product.title}
             </h2>
             <p className=' font-medium text-amber-800'>${product.price}</p>
-            <button className='text-white font-medium bg-purple-800 p-2 rounded-lg mb-4'>
+            <button
+              onClick={() => {
+                handleAdd(product);
+              }}
+              className='text-white font-medium bg-purple-800 p-2 rounded-lg mb-4'>
               Add to Cart
             </button>
           </div>
